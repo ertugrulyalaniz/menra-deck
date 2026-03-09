@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menra — Investor Pitch Deck</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #1A2332;
+      --navy-dark: #0F1419;
+      --cream: #F5F1E8;
+      --beige: #E8E4DB;
+      --purple: #7C3AED;
+      --purple-light: rgba(124, 58, 237, 0.08);
+      --purple-mid: rgba(124, 58, 237, 0.15);
+      --logo-purple: #705a96;
+      --accent: #2C3E50;
+      --green: #1F7A4C;
+      --orange: #D98C00;
+      --red: #D94526;
+      --text: #1A2332;
+      --text-muted: #4A5568;
+    }
+
+    /* ── LIGHT THEME ── */
+    .reveal-viewport { background: var(--cream); }
+
+    .reveal {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 22px;
+      color: var(--text);
+    }
+
+    .reveal h1, .reveal h2, .reveal h3 {
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      color: var(--navy);
+      margin-bottom: 0.6em;
+    }
+
+    .reveal h1 { font-size: 2.4em; }
+    .reveal h2 { font-size: 1.6em; }
+    .reveal h3 { font-size: 1.1em; color: var(--purple); }
+
+    .reveal .slide-number {
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--logo-purple);
+      background: transparent;
+      font-size: 14px;
+    }
+
+    .reveal .progress span { background: var(--purple); }
+    .reveal .controls button { color: var(--purple); }
+    .reveal section { text-align: center; }
+
+    /* ═══════════════════════════════════════════════════════════
+       MENRA LOGO — Exact login screen animation
+       ═══════════════════════════════════════════════════════════ */
+
+    .menra-logo { animation: floatIn 1s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+    .menra-logo svg {
+      width: 140px;
+      height: auto;
+      margin-bottom: 24px;
+      color: var(--navy);
+    }
+
+    /* Inner eye group — search + blink */
+    .eyeInnerAnimated {
+      animation:
+        eyeSearch 10s cubic-bezier(0.25, 0.1, 0.25, 1) infinite,
+        eyeBlink 10s linear infinite;
+    }
+
+    .irisAmbientAnimated {
+      animation: irisAmbientPulse 4s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+      transform-origin: 86.81px 54.27px;
+    }
+
+    .irisRingAnimated {
+      animation: irisGlow 4s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+      transform-origin: 86.81px 54.27px;
+    }
+
+    .pupilAnimated {
+      animation: pupilFocus 10s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+      transform-origin: 86.81px 54.27px;
+    }
+
+    .catchlightAnimated {
+      animation: catchlightFollow 10s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+      transform-origin: 92.17px 48.24px;
+    }
+
+    /* ── Keyframes — eye search ── */
+    @keyframes eyeSearch {
+      0%    { transform: translate(0, 0); }
+      5%    { transform: translate(8px, -1.5px); }
+      13%   { transform: translate(8px, -1.5px); }
+      18%   { transform: translate(0, 0); }
+      23%   { transform: translate(0, 0); }
+      29%   { transform: translate(-8px, 1px); }
+      38%   { transform: translate(-8px, 1px); }
+      44%   { transform: translate(0, 0); }
+      50%   { transform: translate(6px, -4px); }
+      57%   { transform: translate(6px, -4px); }
+      62%   { transform: translate(0, 0); }
+      66%   { transform: translate(0, 0); }
+      72%   { transform: translate(-5px, 3px); }
+      79%   { transform: translate(-5px, 3px); }
+      85%   { transform: translate(0, 0); }
+      100%  { transform: translate(0, 0); }
+    }
+
+    /* ── Keyframes — eye blink ── */
+    @keyframes eyeBlink {
+      0%     { clip-path: inset(0% 0% 0% 0%); }
+      19%    { clip-path: inset(0% 0% 0% 0%); }
+      19.5%  { clip-path: inset(15% 0% 15% 0%); }
+      20%    { clip-path: inset(45% 0% 45% 0%); }
+      20.5%  { clip-path: inset(45% 0% 45% 0%); }
+      21%    { clip-path: inset(15% 0% 15% 0%); }
+      22%    { clip-path: inset(0% 0% 0% 0%); }
+      63%    { clip-path: inset(0% 0% 0% 0%); }
+      63.5%  { clip-path: inset(15% 0% 15% 0%); }
+      64%    { clip-path: inset(45% 0% 45% 0%); }
+      64.5%  { clip-path: inset(45% 0% 45% 0%); }
+      65%    { clip-path: inset(15% 0% 15% 0%); }
+      66%    { clip-path: inset(0% 0% 0% 0%); }
+      87%    { clip-path: inset(0% 0% 0% 0%); }
+      87.5%  { clip-path: inset(15% 0% 15% 0%); }
+      88%    { clip-path: inset(45% 0% 45% 0%); }
+      88.5%  { clip-path: inset(15% 0% 15% 0%); }
+      89%    { clip-path: inset(0% 0% 0% 0%); }
+      90%    { clip-path: inset(15% 0% 15% 0%); }
+      90.5%  { clip-path: inset(45% 0% 45% 0%); }
+      91%    { clip-path: inset(15% 0% 15% 0%); }
+      92%    { clip-path: inset(0% 0% 0% 0%); }
+      100%   { clip-path: inset(0% 0% 0% 0%); }
+    }
+
+    @keyframes irisAmbientPulse {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.15); }
+    }
+
+    @keyframes irisGlow {
+      0%, 100% { opacity: 0.85; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes pupilFocus {
+      0%    { transform: scale(1); }
+      5%    { transform: scale(0.94); }
+      18%   { transform: scale(1); }
+      29%   { transform: scale(0.94); }
+      44%   { transform: scale(1); }
+      50%   { transform: scale(0.95); }
+      62%   { transform: scale(1); }
+      72%   { transform: scale(0.95); }
+      85%   { transform: scale(1); }
+      100%  { transform: scale(1); }
+    }
+
+    @keyframes catchlightFollow {
+      0%    { transform: translate(0, 0); opacity: 0.95; }
+      6%    { transform: translate(-2.5px, 0.5px); opacity: 1; }
+      13%   { transform: translate(-2.5px, 0.5px); opacity: 1; }
+      19%   { transform: translate(0, 0); opacity: 0.95; }
+      30%   { transform: translate(2.5px, -0.3px); opacity: 1; }
+      38%   { transform: translate(2.5px, -0.3px); opacity: 1; }
+      45%   { transform: translate(0, 0); opacity: 0.95; }
+      51%   { transform: translate(-2px, 1.2px); opacity: 1; }
+      57%   { transform: translate(-2px, 1.2px); opacity: 1; }
+      63%   { transform: translate(0, 0); opacity: 0.95; }
+      73%   { transform: translate(1.5px, -1px); opacity: 1; }
+      79%   { transform: translate(1.5px, -1px); opacity: 1; }
+      86%   { transform: translate(0, 0); opacity: 0.95; }
+      100%  { transform: translate(0, 0); opacity: 0.95; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       GENERAL ANIMATIONS
+       ═══════════════════════════════════════════════════════════ */
+
+    @keyframes floatIn {
+      0% { opacity: 0; transform: translateY(30px) scale(0.9); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes slideInLeft {
+      0% { opacity: 0; transform: translateX(-40px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes slideInRight {
+      0% { opacity: 0; transform: translateX(40px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(24px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes scalePop {
+      0% { opacity: 0; transform: scale(0.7); }
+      70% { transform: scale(1.05); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+
+    @keyframes growWidth {
+      0% { width: 0; }
+      100% { width: 80px; }
+    }
+
+    /* ── BRUTALIST CARDS (light) ── */
+    .card {
+      background: white;
+      border: 2px solid var(--navy);
+      box-shadow: 6px 6px 0px var(--purple);
+      padding: 24px 28px;
+      border-radius: 0;
+      text-align: left;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 8px 8px 0px var(--purple);
+    }
+
+    .card-grid { display: grid; gap: 20px; margin-top: 32px; }
+    .card-grid-2 { grid-template-columns: 1fr 1fr; }
+    .card-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .card-grid-4 { grid-template-columns: 1fr 1fr; }
+
+    .card h3 { margin: 0 0 8px 0; font-size: 0.85em; }
+    .card p { margin: 0; font-size: 0.8em; color: var(--text-muted); line-height: 1.5; }
+
+    /* ── TAGS ── */
+    .tag {
+      display: inline-block;
+      background: var(--purple);
+      color: white;
+      padding: 4px 14px;
+      font-size: 0.65em;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-radius: 0;
+      margin: 4px 4px 4px 0;
+    }
+
+    .tag.outline {
+      background: transparent;
+      border: 2px solid var(--purple);
+      color: var(--purple);
+    }
+
+    /* ── BIG NUMBER ── */
+    .big-number {
+      font-size: 4.2em;
+      font-weight: 700;
+      line-height: 1;
+      margin: 16px 0;
+      background: linear-gradient(90deg, var(--purple) 0%, var(--logo-purple) 40%, var(--purple) 80%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 3s linear infinite;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 80px;
+      height: 4px;
+      background: var(--purple);
+      margin: 16px 0;
+      border-radius: 0;
+    }
+
+    .reveal .present .divider {
+      animation: growWidth 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+      animation-delay: 0.3s;
+    }
+
+    /* ── COMPARE ── */
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 32px;
+    }
+
+    .compare-col { text-align: left; }
+
+    .compare-col .label {
+      font-size: 0.7em;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .compare-col.now .label { color: var(--purple); }
+
+    .reveal .present .compare-col:first-child {
+      animation: slideInLeft 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+      animation-delay: 0.2s;
+    }
+    .reveal .present .compare-col:last-child {
+      animation: slideInRight 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+      animation-delay: 0.4s;
+    }
+
+    /* ── AI PLATFORMS GRID ── */
+    .platform-grid {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 24px;
+    }
+
+    .platform-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: white;
+      border: 2px solid var(--navy);
+      box-shadow: 4px 4px 0px var(--beige);
+      padding: 8px 16px;
+      font-size: 0.7em;
+      font-weight: 600;
+      color: var(--navy);
+      border-radius: 0;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .platform-badge:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0px var(--beige);
+    }
+
+    .platform-badge img {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+    }
+
+    .platform-badge .p-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 0;
+      flex-shrink: 0;
+    }
+
+    .reveal .present .platform-badge {
+      animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    .reveal .present .platform-badge:nth-child(1) { animation-delay: 0.3s; }
+    .reveal .present .platform-badge:nth-child(2) { animation-delay: 0.38s; }
+    .reveal .present .platform-badge:nth-child(3) { animation-delay: 0.46s; }
+    .reveal .present .platform-badge:nth-child(4) { animation-delay: 0.54s; }
+    .reveal .present .platform-badge:nth-child(5) { animation-delay: 0.62s; }
+    .reveal .present .platform-badge:nth-child(6) { animation-delay: 0.70s; }
+    .reveal .present .platform-badge:nth-child(7) { animation-delay: 0.78s; }
+    .reveal .present .platform-badge:nth-child(8) { animation-delay: 0.86s; }
+    .reveal .present .platform-badge:nth-child(9) { animation-delay: 0.94s; }
+
+    /* ── QUESTION LIST ── */
+    .question-list {
+      list-style: none;
+      padding: 0;
+      margin: 24px 0;
+      text-align: left;
+    }
+
+    .question-list li {
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(26, 35, 50, 0.1);
+      font-size: 0.9em;
+      line-height: 1.5;
+    }
+
+    .question-list li::before {
+      content: '\2192\00a0';
+      color: var(--purple);
+      font-weight: 700;
+    }
+
+    .reveal .present .question-list li { animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+    .reveal .present .question-list li:nth-child(1) { animation-delay: 0.2s; }
+    .reveal .present .question-list li:nth-child(2) { animation-delay: 0.35s; }
+    .reveal .present .question-list li:nth-child(3) { animation-delay: 0.5s; }
+
+    /* ── METRIC BOX ── */
+    .metric-box {
+      display: inline-block;
+      background: var(--purple-light);
+      border: 3px solid var(--purple);
+      box-shadow: 8px 8px 0px rgba(124, 58, 237, 0.2);
+      padding: 20px 40px;
+      margin-top: 24px;
+      border-radius: 0;
+    }
+
+    .metric-box .metric-label {
+      font-size: 0.65em;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+    }
+
+    .metric-box .metric-value {
+      font-size: 1.8em;
+      font-weight: 700;
+      color: var(--purple);
+    }
+
+    .reveal .present .metric-box { animation: scalePop 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.6s; }
+
+    /* ── ALERT BOX ── */
+    .alert-box {
+      background: rgba(217, 69, 38, 0.06);
+      border: 2px solid var(--red);
+      padding: 16px 24px;
+      margin-top: 24px;
+      font-size: 0.85em;
+      font-weight: 600;
+      color: var(--red);
+      border-radius: 0;
+    }
+
+    .reveal .present .alert-box { animation: scalePop 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.65s; }
+
+    /* ── TIMELINE ── */
+    .timeline {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 32px;
+      text-align: left;
+    }
+
+    .timeline-col h3 { font-size: 1.4em; margin-bottom: 16px; }
+    .timeline-col ul { list-style: none; padding: 0; margin: 0; }
+
+    .timeline-col ul li {
+      padding: 10px 0;
+      border-left: 3px solid var(--purple);
+      padding-left: 16px;
+      margin-bottom: 8px;
+      font-size: 0.85em;
+      line-height: 1.4;
+      color: var(--text);
+    }
+
+    .reveal .present .timeline-col:first-child { animation: slideInLeft 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.2s; }
+    .reveal .present .timeline-col:last-child { animation: slideInRight 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.4s; }
+
+    .reveal .present .timeline-col ul li { animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+    .reveal .present .timeline-col:first-child ul li:nth-child(1) { animation-delay: 0.4s; }
+    .reveal .present .timeline-col:first-child ul li:nth-child(2) { animation-delay: 0.5s; }
+    .reveal .present .timeline-col:first-child ul li:nth-child(3) { animation-delay: 0.6s; }
+    .reveal .present .timeline-col:last-child ul li:nth-child(1) { animation-delay: 0.55s; }
+    .reveal .present .timeline-col:last-child ul li:nth-child(2) { animation-delay: 0.65s; }
+    .reveal .present .timeline-col:last-child ul li:nth-child(3) { animation-delay: 0.75s; }
+
+    /* ── REVENUE STREAMS ── */
+    .streams {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+      margin-top: 32px;
+    }
+
+    .stream-item {
+      background: white;
+      border: 2px solid var(--navy);
+      box-shadow: 6px 6px 0px var(--purple);
+      padding: 24px;
+      text-align: center;
+      border-radius: 0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .stream-item:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 8px 8px 0px var(--purple);
+    }
+
+    .stream-item .stream-icon { font-size: 1.6em; margin-bottom: 12px; color: var(--purple); }
+    .stream-item h3 { font-size: 0.75em; margin-bottom: 6px; }
+    .stream-item p { font-size: 0.7em; color: var(--text-muted); margin: 0; line-height: 1.4; }
+
+    .reveal .present .stream-item:nth-child(1) { animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.2s; }
+    .reveal .present .stream-item:nth-child(2) { animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.35s; }
+    .reveal .present .stream-item:nth-child(3) { animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.5s; }
+
+    /* ── SUBTITLE ── */
+    .subtitle { font-size: 0.85em; color: var(--text-muted); margin-top: 8px; }
+
+    /* ── CLOSING ── */
+    .closing-text { font-size: 1.1em; line-height: 1.6; max-width: 700px; margin: 0 auto; }
+    .closing-highlight { color: var(--purple); font-weight: 700; }
+
+    .reveal .present .closing-text:nth-of-type(1) { animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.3s; }
+    .reveal .present .closing-text:nth-of-type(2) { animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.6s; }
+
+    /* ── KEYWORD ── */
+    .keyword { color: var(--purple); font-weight: 700; }
+
+    /* ── HUB FLOW ── */
+    .hub-flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+
+    .hub-node {
+      background: white;
+      border: 2px solid var(--navy);
+      box-shadow: 5px 5px 0px var(--purple);
+      padding: 16px 22px;
+      font-size: 0.75em;
+      font-weight: 600;
+      border-radius: 0;
+    }
+
+    .hub-arrow { font-size: 1.4em; color: var(--purple); }
+
+    .reveal .present .hub-node:nth-child(1) { animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.15s; }
+    .reveal .present .hub-arrow:nth-child(2) { animation: fadeUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.25s; }
+    .reveal .present .hub-node:nth-child(3) { animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.3s; }
+    .reveal .present .hub-arrow:nth-child(4) { animation: fadeUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.4s; }
+    .reveal .present .hub-node:nth-child(5) { animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.45s; }
+    .reveal .present .hub-arrow:nth-child(6) { animation: fadeUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.55s; }
+    .reveal .present .hub-node:nth-child(7) { animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.6s; }
+
+    /* ── VALIDATION GRID ── */
+    .validation-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 28px;
+    }
+
+    .validation-item {
+      background: white;
+      border-left: 4px solid var(--purple);
+      padding: 16px 20px;
+      text-align: left;
+      font-size: 0.8em;
+      line-height: 1.5;
+      border-radius: 0;
+      box-shadow: 3px 3px 0px rgba(26, 35, 50, 0.08);
+    }
+
+    .reveal .present .validation-item:nth-child(1) { animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.2s; }
+    .reveal .present .validation-item:nth-child(2) { animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.35s; }
+    .reveal .present .validation-item:nth-child(3) { animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.5s; }
+    .reveal .present .validation-item:nth-child(4) { animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.65s; }
+
+    /* ── CARD STAGGER ── */
+    .reveal .present .card-grid .card:nth-child(1) { animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.2s; }
+    .reveal .present .card-grid .card:nth-child(2) { animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.35s; }
+    .reveal .present .card-grid .card:nth-child(3) { animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.5s; }
+    .reveal .present .card-grid .card:nth-child(4) { animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.65s; }
+
+    /* ── TAG STAGGER ── */
+    .reveal .present .tag-row .tag:nth-child(1) { animation: fadeUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.5s; }
+    .reveal .present .tag-row .tag:nth-child(2) { animation: fadeUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.6s; }
+    .reveal .present .tag-row .tag:nth-child(3) { animation: fadeUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.7s; }
+
+    /* ── MENRA WORDMARK — Satoshi with ss01 stylistic "a" ── */
+    .reveal h1.menra-wordmark,
+    .reveal .menra-wordmark {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 900;
+      font-feature-settings: "ss01";
+      letter-spacing: -0.02em;
+      color: var(--navy);
+      text-transform: none;
+    }
+
+    /* ── TITLE SPECIFIC ── */
+    .title-heading { animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.4s; }
+    .title-sub { animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.7s; }
+
+    /* ── DOT GRID TEXTURE ── */
+    .reveal-viewport::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: radial-gradient(circle, rgba(26, 35, 50, 0.06) 1px, transparent 1px);
+      background-size: 24px 24px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── REDUCED MOTION ── */
+    @media (prefers-reduced-motion: reduce) {
+      .eyeInnerAnimated,
+      .irisAmbientAnimated,
+      .irisRingAnimated,
+      .pupilAnimated,
+      .catchlightAnimated { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- SLIDE 1: Title -->
+      <section>
+        <div class="menra-logo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 173.59 108.64" aria-hidden="true">
+            <defs>
+              <filter id="irisGlow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+              <filter id="catchlightSoft" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="0.8" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+              <radialGradient id="irisGlowGrad" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#705a96" stop-opacity="0.4" />
+                <stop offset="100%" stop-color="#705a96" stop-opacity="0" />
+              </radialGradient>
+            </defs>
+            <!-- Outer eye body — static -->
+            <path d="M121.13 103.9c-1.01-1.04-1.84-1.99-3.06-2.72-18.42 9.15-39.19 9.87-58.22 1.91C36.23 93.26 15.82 74.71.02 54.3 16.91 32.16 44.96 7.17 72.89 1.46c12.55-2.7 25.01-1.74 37.07 2.52 24.2 8.45 48.28 30.07 63.64 50.31-8.69 11.17-17.65 21.36-28.58 29.51l-6.63 4.94c3.95 4.96 3.52 11.88-1.12 15.97s-11.51 3.97-16.15-.8Zm12.2-11.41-17.15-17.22c5.24-8 7.82-16.8 6.33-26.09-2.87-17.85-17.48-30.56-35.55-30.74l-.17-12.03c-6.76.07-13.37 1.11-20.01 3.3l-.12 14.91c-9.79 6.4-15.57 17.25-15.89 28.71s5.25 22.8 14.82 29.76c13.01 9.45 30.21 9.45 43.22-.57l17.36 17.17c2.11 2.09 5.33 1.66 7.02-.08 1.9-1.97 2.1-5.14.14-7.12M60.58 19.57l-.16-7.33c-5.01 2.11-9.33 4.38-13.61 7.3zm77.25 17.38v-9.86c-5.79-4.1-11.24-8.16-17.82-11.53-.1 18.43-1.11 7.76 5.41 21.44zm-89.55-.07c1.79-4.46 4.35-7.6 7.13-11.19l-17.45.08c-1.26 0-2.06 1.1-2.11 2.27l.04 8.87 12.38-.03Zm-2.56 6.19-15.81-.09-.17-10.83c-5.82 5.01-10.93 10.02-15.98 15.92l30.99.08.96-5.08Zm119.02 10.69c-6.71-8.29-13.19-14.94-20.73-21.34l-.07 21.72 20.79-.37Zm-26.87.23-.07-10.74-9.98.05c.92 3.91 1.05 7.25 1.45 10.88 2.99-.03 5.69.19 8.59-.19Zm-108.1.37-21.17.19C15 62.73 21.97 69.5 29.7 76.5l.06-22.13Zm16.06 10.98c-.91-3.63-1.34-6.98-1.51-10.87-2.9-.16-5.49-.28-8.4 0l.02 10.89h9.89Zm98.25 10.68c1.76-1.43 4.02-2.9 5.22-4.77.89-3.43.17-7.11.23-10.84l-20.54-.04c-.55 1.79-.89 3.47-.95 5.27l15.9.18.15 10.2Zm-90.93 3.84c-2.39-2.66-3.61-5.52-5.14-8.38l-12.08.11-.06 9.98c5.37 4 10.78 7.72 17.11 11.01l.16-12.72Zm33.51 22.39c.28-2.36.27-3.9 0-5.85-10.12-.06-19.25-3.46-27.25-9.97-.33 3.22-.24 6.14-.12 9.43 8.69 4 17.82 6.15 27.37 6.38Z" fill="currentColor"/>
+            <!-- Inner eye group — animated -->
+            <g class="eyeInnerAnimated">
+              <circle class="irisAmbientAnimated" cx="86.81" cy="54.27" r="30" fill="url(#irisGlowGrad)" />
+              <path class="irisRingAnimated" d="M86.81 33.47c-11.49 0-20.8 9.31-20.8 20.8s9.31 20.8 20.8 20.8 20.8-9.31 20.8-20.8-9.31-20.8-20.8-20.8m0 35.45c-8.09 0-14.65-6.56-14.65-14.65s6.56-14.65 14.65-14.65 14.65 6.56 14.65 14.65-6.56 14.65-14.65 14.65" fill="#705a96" filter="url(#irisGlow)" />
+              <path d="M114.1 54.27c0 15.07-12.21 27.29-27.28 27.29S59.54 69.34 59.54 54.27s12.21-27.29 27.28-27.29S114.1 39.2 114.1 54.27m-6.49.03c0-11.48-9.31-20.79-20.79-20.79S66.03 42.82 66.03 54.3s9.31 20.79 20.79 20.79 20.79-9.31 20.79-20.79" fill="currentColor" />
+              <circle class="pupilAnimated" cx="86.81" cy="54.27" r="14.65" fill="currentColor" />
+              <circle class="catchlightAnimated" cx="92.17" cy="48.24" r="7.61" fill="#f0ece1" filter="url(#catchlightSoft)" />
+            </g>
+          </svg>
+        </div>
+        <h1 class="title-heading menra-wordmark" style="font-size: 2.4em; margin-bottom: 0.3em;">menra</h1>
+        <div class="divider" style="margin: 0 auto 20px;"></div>
+        <p class="title-sub" style="font-size: 1.05em; color: var(--text-muted); max-width: 600px; margin: 0 auto; line-height: 1.5;">
+          AI Visibility Engine<br>for the AI Search Era
+        </p>
+      </section>
+
+      <!-- SLIDE 2: The Shift -->
+      <section>
+        <h2>The Shift</h2>
+        <p class="subtitle">Search behavior is changing.</p>
+
+        <div class="compare">
+          <div class="compare-col">
+            <div class="label">Before</div>
+            <div class="card" style="box-shadow: 6px 6px 0px var(--accent);">
+              <p>Users searched on Google and <strong>clicked links</strong>.</p>
+            </div>
+          </div>
+          <div class="compare-col now">
+            <div class="label">Now</div>
+            <div class="card">
+              <p>Users ask AI assistants and receive a <strong>single synthesized answer</strong>.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- All 9 supported AI platforms with inline SVG logos -->
+        <div class="platform-grid" style="margin-top: 28px;">
+          <div class="platform-badge">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#10A37F"><path d="M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.985 5.985 0 0 0-3.998 2.9 6.046 6.046 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073zM13.26 22.43a4.476 4.476 0 0 1-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 0 0 .392-.681v-6.737l2.02 1.168a.071.071 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494zM3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085 4.783 2.759a.771.771 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.033.062L9.74 19.95a4.5 4.5 0 0 1-6.14-1.646zM2.34 7.896a4.485 4.485 0 0 1 2.366-1.973V11.6a.766.766 0 0 0 .388.676l5.815 3.355-2.02 1.168a.076.076 0 0 1-.071 0l-4.83-2.786A4.504 4.504 0 0 1 2.34 7.872zm16.597 3.855l-5.833-3.387L15.119 7.2a.076.076 0 0 1 .071 0l4.83 2.791a4.494 4.494 0 0 1-.676 8.105v-5.678a.79.79 0 0 0-.407-.667zm2.01-3.023l-.141-.085-4.774-2.782a.776.776 0 0 0-.785 0L9.409 9.23V6.897a.066.066 0 0 1 .028-.061l4.83-2.787a4.5 4.5 0 0 1 6.68 4.66zm-12.64 4.135l-2.02-1.164a.08.08 0 0 1-.038-.057V6.075a4.5 4.5 0 0 1 7.375-3.453l-.142.08L8.704 5.46a.795.795 0 0 0-.393.681zm1.097-2.365l2.602-1.5 2.607 1.5v2.999l-2.597 1.5-2.607-1.5z"/></svg>
+            ChatGPT
+          </div>
+          <div class="platform-badge">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#20808D"><path d="M12 0C5.372 0 0 5.373 0 12c0 6.628 5.372 12 12 12 6.627 0 12-5.372 12-12 0-6.627-5.373-12-12-12zm-.915 4.258h1.83v5.307l4.597-2.654 .915 1.585-4.597 2.654 4.597 2.654-.915 1.585-4.597-2.654v5.307h-1.83v-5.307l-4.597 2.654-.915-1.585 4.597-2.654-4.597-2.654.915-1.585 4.597 2.654z"/></svg>
+            Perplexity
+          </div>
+          <div class="platform-badge">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#D97706"><path d="M17.303 4.698A3.49 3.49 0 0 0 14.56 3.5a3.49 3.49 0 0 0-2.745 1.198A3.49 3.49 0 0 0 9.07 3.5a3.49 3.49 0 0 0-2.744 1.198A3.49 3.49 0 0 0 3.58 3.5a3.5 3.5 0 0 0-3.5 3.5v.5h1v-.5a2.5 2.5 0 0 1 5 0v9a2.5 2.5 0 0 1-5 0v-.5h-1v.5a3.5 3.5 0 0 0 6.245 2.198A3.49 3.49 0 0 0 9.07 20.5a3.49 3.49 0 0 0 2.745-1.198A3.49 3.49 0 0 0 14.56 20.5a3.49 3.49 0 0 0 2.744-1.198A3.49 3.49 0 0 0 20.05 20.5a3.5 3.5 0 0 0 3.5-3.5v-.5h-1v.5a2.5 2.5 0 0 1-5 0V7a2.5 2.5 0 0 1 5 0v.5h1V7a3.5 3.5 0 0 0-3.5-3.5 3.49 3.49 0 0 0-2.744 1.198zM14.56 4.5a2.5 2.5 0 0 1 2.5 2.5v9a2.5 2.5 0 0 1-5 0V7a2.5 2.5 0 0 1 2.5-2.5zm-5.49 0a2.5 2.5 0 0 1 2.5 2.5v9a2.5 2.5 0 0 1-5 0V7a2.5 2.5 0 0 1 2.5-2.5z"/></svg>
+            Claude
+          </div>
+          <div class="platform-badge">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#4285F4"><path d="M11.04 1.32 9.36 4.68l-.24.48-.48-.12-3.72-.84.36 3.84.03.48-.48.12-3.72.96L3.48 13l.36.36-.24.36-2.04 3.24 3.6 1.32.48.18-.06.48-.48 3.84 3.6-1.44.45-.18.3.36 2.4 2.88 2.4-2.88.3-.36.45.18 3.6 1.44-.48-3.84-.06-.48.48-.18 3.6-1.32-2.04-3.24-.24-.36.36-.36 2.4-3.48-3.72-.96-.48-.12.03-.48.36-3.84-3.72.84-.48.12-.24-.48L12.96 1.32 12 0z"/></svg>
+            Gemini
+          </div>
+          <div class="platform-badge">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#7C3AED"><rect x="1" y="1" width="10" height="10" rx="1"/><rect x="13" y="1" width="10" height="10" rx="1"/><rect x="1" y="13" width="10" height="10" rx="1"/><rect x="13" y="13" width="10" height="10" rx="1"/></svg>
+            Copilot
+          </div>
+          <div class="platform-badge">
+            <svg width="20" height="20" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            Google AI
+          </div>
+          <div class="platform-badge">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#000000"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            Grok
+          </div>
+          <div class="platform-badge">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#1A73E8"><circle cx="12" cy="12" r="10" fill="none" stroke="#1A73E8" stroke-width="2"/><path d="M7 12.5c0-3.5 2.5-6 5.5-6s5 2 5 5c0 2.5-1.5 4.5-4 4.5-1.5 0-2.5-.8-2.5-2.2 0-.4.1-.9.2-1.3l.8-3h-1.5l-.2.8c-.4-.6-1.1-1-2-1-2 0-3.5 1.8-3.5 4 0 1.5.8 2.5 2.2 2.5.9 0 1.7-.5 2.2-1.2 0 .8.6 1.2 1.5 1.2 3.2 0 5.3-2.5 5.3-5.8 0-3.8-2.8-6.2-6.2-6.2C8.5 4.3 5 8 5 12.5c0 3.5 2 6 5.5 6.5" fill="#1A73E8"/></svg>
+            DeepSeek
+          </div>
+          <div class="platform-badge">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#0668E1"><path d="M6.915 4.03c-1.968 0-3.683 1.28-4.871 3.113C.704 9.208 0 11.883 0 14.449c0 .706.07 1.369.21 1.973a6.624 6.624 0 0 0 .265.86 5.297 5.297 0 0 0 .371.833c.164.27.357.508.579.708.473.43 1.068.674 1.727.674 1.287 0 2.382-.772 3.358-1.836a22.83 22.83 0 0 0 2.253-2.986l.672-.972.672.972a22.83 22.83 0 0 0 2.253 2.986c.976 1.064 2.071 1.836 3.358 1.836.659 0 1.254-.244 1.727-.674.222-.2.415-.437.579-.708a5.3 5.3 0 0 0 .371-.833c.104-.276.194-.56.265-.86.14-.604.21-1.267.21-1.973 0-2.566-.704-5.24-2.044-7.303C15.768 5.31 14.053 4.03 12.085 4.03c-1.287 0-2.382.772-3.358 1.836A22.83 22.83 0 0 0 6.474 8.85l-.672.972-.672-.972a22.83 22.83 0 0 0-2.253-2.986C1.9 4.8.806 4.03-.481 4.03z" transform="translate(2.915)"/></svg>
+            Meta AI
+          </div>
+        </div>
+
+        <p style="margin-top: 20px; font-size: 0.75em; color: var(--text-muted);">
+          Discovery is moving from search engines to AI systems.
+        </p>
+      </section>
+
+      <!-- SLIDE 3: The Problem -->
+      <section>
+        <h2>The Problem</h2>
+        <p class="subtitle">Brands have no visibility inside AI answers.</p>
+
+        <ul class="question-list" style="max-width: 650px; margin: 24px auto;">
+          <li>Does ChatGPT recommend our product?</li>
+          <li>How are AI systems describing our brand?</li>
+          <li>Are competitors being recommended instead?</li>
+        </ul>
+
+        <div class="alert-box" style="max-width: 500px; margin: 28px auto 0;">
+          Traditional SEO cannot solve this.
+        </div>
+      </section>
+
+      <!-- SLIDE 4: The Solution -->
+      <section>
+        <h2>The Solution</h2>
+        <p class="subtitle">Menra is an AI visibility engine.</p>
+
+        <div class="card-grid card-grid-3" style="max-width: 750px; margin: 32px auto 0;">
+          <div class="card">
+            <h3>Track</h3>
+            <p>How AI models mention your brand across 9 platforms</p>
+          </div>
+          <div class="card">
+            <h3>Measure</h3>
+            <p>Your AI visibility with our proprietary AIV metric</p>
+          </div>
+          <div class="card">
+            <h3>Improve</h3>
+            <p>Your presence in AI-generated answers</p>
+          </div>
+        </div>
+
+        <div class="metric-box" style="margin-top: 36px;">
+          <div class="metric-label">Core Metric</div>
+          <div class="metric-value">AIV Score</div>
+        </div>
+      </section>
+
+      <!-- SLIDE 5: Product -->
+      <section>
+        <h2>Product</h2>
+        <p class="subtitle">AI Visibility Dashboard</p>
+
+        <div class="card-grid card-grid-4" style="max-width: 720px; margin: 28px auto 0;">
+          <div class="card">
+            <h3>AI Mentions</h3>
+            <p>Track when and how AI systems reference your brand</p>
+          </div>
+          <div class="card">
+            <h3>Brand Sentiment</h3>
+            <p>Understand how AI describes your brand to users</p>
+          </div>
+          <div class="card">
+            <h3>Competitor Analysis</h3>
+            <p>See how you compare against competitors in AI answers</p>
+          </div>
+          <div class="card">
+            <h3>AIV Score</h3>
+            <p>Single metric to measure your overall AI visibility</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 6: Menra Hub -->
+      <section>
+        <h2>Menra Hub</h2>
+        <p class="subtitle">Contributor Network</p>
+
+        <div class="hub-flow">
+          <div class="hub-node">Writers &amp; Researchers</div>
+          <div class="hub-arrow">&rarr;</div>
+          <div class="hub-node">Knowledge Contributions</div>
+          <div class="hub-arrow">&rarr;</div>
+          <div class="hub-node">Improved AI Visibility</div>
+          <div class="hub-arrow">&rarr;</div>
+          <div class="hub-node">Contributor Rewards</div>
+        </div>
+
+        <div class="card" style="max-width: 600px; margin: 36px auto 0; text-align: left;">
+          <p>Domain experts contribute insights that improve AI visibility signals. When contributions drive results, <span class="keyword">contributors are rewarded</span>.</p>
+          <br>
+          <p style="opacity: 0.6; font-size: 0.75em;">A continuously improving knowledge network.</p>
+        </div>
+      </section>
+
+      <!-- SLIDE 7: Market Opportunity -->
+      <section>
+        <h2>Market Opportunity</h2>
+
+        <div class="big-number">$80B+</div>
+        <p style="font-size: 0.9em; color: var(--text-muted);">Global SEO industry</p>
+
+        <div class="divider" style="margin: 24px auto;"></div>
+
+        <p style="font-size: 0.95em; max-width: 550px; margin: 0 auto; line-height: 1.6;">
+          As discovery shifts to AI systems,<br>a new category is emerging:
+        </p>
+        <h3 style="font-size: 1.4em; margin-top: 16px;">AI Visibility</h3>
+
+        <div class="tag-row" style="display: flex; gap: 12px; justify-content: center; margin-top: 24px; flex-wrap: wrap;">
+          <span class="tag">Monitor AI Recommendations</span>
+          <span class="tag">Understand Brand Representation</span>
+          <span class="tag">Improve AI Answers</span>
+        </div>
+      </section>
+
+      <!-- SLIDE 8: Early Validation -->
+      <section>
+        <h2>Early Validation</h2>
+        <p class="subtitle">AI search adoption is accelerating rapidly.</p>
+
+        <p style="margin: 24px auto 0; max-width: 600px; font-size: 0.9em; line-height: 1.6;">
+          Companies are asking <span class="keyword">new questions</span> that didn't exist in the traditional SEO era:
+        </p>
+
+        <div class="validation-grid" style="max-width: 700px; margin: 28px auto 0;">
+          <div class="validation-item">How do AI systems describe our product?</div>
+          <div class="validation-item">Why are competitors recommended instead of us?</div>
+          <div class="validation-item">How can we influence AI-generated answers?</div>
+          <div class="validation-item">What does our AI visibility look like vs. competitors?</div>
+        </div>
+      </section>
+
+      <!-- SLIDE 9: Business Model -->
+      <section>
+        <h2>Business Model</h2>
+        <p class="subtitle">SaaS Platform</p>
+
+        <div class="streams">
+          <div class="stream-item">
+            <div class="stream-icon">$</div>
+            <h3>Subscriptions</h3>
+            <p>Monthly SaaS plans for brands and agencies</p>
+          </div>
+          <div class="stream-item">
+            <div class="stream-icon">&lt;/&gt;</div>
+            <h3>Enterprise Analytics</h3>
+            <p>Advanced AI visibility tools for enterprise teams</p>
+          </div>
+          <div class="stream-item">
+            <div class="stream-icon">&amp;</div>
+            <h3>Hub Marketplace</h3>
+            <p>Contributor marketplace through Menra Hub</p>
+          </div>
+        </div>
+
+        <div class="card" style="max-width: 500px; margin: 36px auto 0; text-align: center;">
+          <p><span class="keyword">AI Visibility</span> will become a new marketing category.</p>
+        </div>
+      </section>
+
+      <!-- SLIDE 10: Roadmap -->
+      <section>
+        <h2>Roadmap</h2>
+
+        <div class="timeline">
+          <div class="timeline-col">
+            <h3>2025</h3>
+            <ul>
+              <li>Launch Menra analytics platform</li>
+              <li>Onboard early customers</li>
+              <li>Launch Menra Hub</li>
+            </ul>
+          </div>
+          <div class="timeline-col">
+            <h3>2026</h3>
+            <ul>
+              <li>Expand contributor network</li>
+              <li>Scale globally</li>
+              <li>Establish AIV as an industry metric</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 11: Closing -->
+      <section>
+        <div class="menra-logo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 173.59 108.64" aria-hidden="true">
+            <defs>
+              <filter id="irisGlow2" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+              <filter id="catchlightSoft2" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="0.8" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+              <radialGradient id="irisGlowGrad2" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#705a96" stop-opacity="0.4" />
+                <stop offset="100%" stop-color="#705a96" stop-opacity="0" />
+              </radialGradient>
+            </defs>
+            <path d="M121.13 103.9c-1.01-1.04-1.84-1.99-3.06-2.72-18.42 9.15-39.19 9.87-58.22 1.91C36.23 93.26 15.82 74.71.02 54.3 16.91 32.16 44.96 7.17 72.89 1.46c12.55-2.7 25.01-1.74 37.07 2.52 24.2 8.45 48.28 30.07 63.64 50.31-8.69 11.17-17.65 21.36-28.58 29.51l-6.63 4.94c3.95 4.96 3.52 11.88-1.12 15.97s-11.51 3.97-16.15-.8Zm12.2-11.41-17.15-17.22c5.24-8 7.82-16.8 6.33-26.09-2.87-17.85-17.48-30.56-35.55-30.74l-.17-12.03c-6.76.07-13.37 1.11-20.01 3.3l-.12 14.91c-9.79 6.4-15.57 17.25-15.89 28.71s5.25 22.8 14.82 29.76c13.01 9.45 30.21 9.45 43.22-.57l17.36 17.17c2.11 2.09 5.33 1.66 7.02-.08 1.9-1.97 2.1-5.14.14-7.12M60.58 19.57l-.16-7.33c-5.01 2.11-9.33 4.38-13.61 7.3zm77.25 17.38v-9.86c-5.79-4.1-11.24-8.16-17.82-11.53-.1 18.43-1.11 7.76 5.41 21.44zm-89.55-.07c1.79-4.46 4.35-7.6 7.13-11.19l-17.45.08c-1.26 0-2.06 1.1-2.11 2.27l.04 8.87 12.38-.03Zm-2.56 6.19-15.81-.09-.17-10.83c-5.82 5.01-10.93 10.02-15.98 15.92l30.99.08.96-5.08Zm119.02 10.69c-6.71-8.29-13.19-14.94-20.73-21.34l-.07 21.72 20.79-.37Zm-26.87.23-.07-10.74-9.98.05c.92 3.91 1.05 7.25 1.45 10.88 2.99-.03 5.69.19 8.59-.19Zm-108.1.37-21.17.19C15 62.73 21.97 69.5 29.7 76.5l.06-22.13Zm16.06 10.98c-.91-3.63-1.34-6.98-1.51-10.87-2.9-.16-5.49-.28-8.4 0l.02 10.89h9.89Zm98.25 10.68c1.76-1.43 4.02-2.9 5.22-4.77.89-3.43.17-7.11.23-10.84l-20.54-.04c-.55 1.79-.89 3.47-.95 5.27l15.9.18.15 10.2Zm-90.93 3.84c-2.39-2.66-3.61-5.52-5.14-8.38l-12.08.11-.06 9.98c5.37 4 10.78 7.72 17.11 11.01l.16-12.72Zm33.51 22.39c.28-2.36.27-3.9 0-5.85-10.12-.06-19.25-3.46-27.25-9.97-.33 3.22-.24 6.14-.12 9.43 8.69 4 17.82 6.15 27.37 6.38Z" fill="currentColor"/>
+            <g class="eyeInnerAnimated">
+              <circle class="irisAmbientAnimated" cx="86.81" cy="54.27" r="30" fill="url(#irisGlowGrad2)" />
+              <path class="irisRingAnimated" d="M86.81 33.47c-11.49 0-20.8 9.31-20.8 20.8s9.31 20.8 20.8 20.8 20.8-9.31 20.8-20.8-9.31-20.8-20.8-20.8m0 35.45c-8.09 0-14.65-6.56-14.65-14.65s6.56-14.65 14.65-14.65 14.65 6.56 14.65 14.65-6.56 14.65-14.65 14.65" fill="#705a96" filter="url(#irisGlow2)" />
+              <path d="M114.1 54.27c0 15.07-12.21 27.29-27.28 27.29S59.54 69.34 59.54 54.27s12.21-27.29 27.28-27.29S114.1 39.2 114.1 54.27m-6.49.03c0-11.48-9.31-20.79-20.79-20.79S66.03 42.82 66.03 54.3s9.31 20.79 20.79 20.79 20.79-9.31 20.79-20.79" fill="currentColor" />
+              <circle class="pupilAnimated" cx="86.81" cy="54.27" r="14.65" fill="currentColor" />
+              <circle class="catchlightAnimated" cx="92.17" cy="48.24" r="7.61" fill="#f0ece1" filter="url(#catchlightSoft2)" />
+            </g>
+          </svg>
+        </div>
+
+        <div class="divider" style="margin: 0 auto 24px;"></div>
+
+        <p class="closing-text">
+          Search is shifting from links to answers.
+        </p>
+        <p class="closing-text" style="margin-top: 20px;">
+          <span class="closing-highlight">Menra ensures brands become the answers AI gives.</span>
+        </p>
+
+        <div style="margin-top: 48px;">
+          <span class="menra-wordmark" style="font-size: 1.2em;">menra.ai</span>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script type="module">
+    import Reveal from 'https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.esm.js';
+
+    Reveal.initialize({
+      transition: 'slide',
+      controls: true,
+      progress: true,
+      hash: true,
+      slideNumber: true,
+      width: 1200,
+      height: 700,
+      margin: 0.08,
+    });
+  </script>
+</body>
+</html>
