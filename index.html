@@ -628,13 +628,132 @@
       .pupilAnimated,
       .catchlightAnimated { animation: none; }
     }
+
+    /* ── STAT GRID (traction numbers) ── */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 24px;
+      margin-top: 32px;
+    }
+
+    .stat-item {
+      background: white;
+      border: 2px solid var(--navy);
+      box-shadow: 6px 6px 0px var(--purple);
+      padding: 24px;
+      text-align: center;
+      border-radius: 0;
+    }
+
+    .stat-item .stat-number {
+      font-size: 2.2em;
+      font-weight: 700;
+      color: var(--purple);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-item .stat-label {
+      font-size: 0.7em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .reveal .present .stat-item:nth-child(1) { animation: scalePop 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.2s; }
+    .reveal .present .stat-item:nth-child(2) { animation: scalePop 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.35s; }
+    .reveal .present .stat-item:nth-child(3) { animation: scalePop 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.5s; }
+
+    /* ── TEAM GRID ── */
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 24px;
+      margin-top: 32px;
+    }
+
+    .team-member {
+      background: white;
+      border: 2px solid var(--navy);
+      box-shadow: 6px 6px 0px var(--purple);
+      padding: 28px 24px;
+      text-align: center;
+      border-radius: 0;
+    }
+
+    .team-member .team-role {
+      font-size: 0.65em;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--purple);
+      margin-bottom: 4px;
+    }
+
+    .team-member .team-name {
+      font-size: 1em;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    .team-member .team-bio {
+      font-size: 0.7em;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .reveal .present .team-member:nth-child(1) { animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.2s; }
+    .reveal .present .team-member:nth-child(2) { animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.35s; }
+    .reveal .present .team-member:nth-child(3) { animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.5s; }
+
+    /* ── BELIEF LIST ── */
+    .belief-list {
+      list-style: none;
+      padding: 0;
+      margin: 24px auto;
+      max-width: 700px;
+      text-align: left;
+    }
+
+    .belief-list li {
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      background: white;
+      border: 2px solid var(--navy);
+      box-shadow: 4px 4px 0px var(--purple);
+      font-size: 0.82em;
+      line-height: 1.5;
+    }
+
+    .belief-list li strong {
+      color: var(--purple);
+    }
+
+    .reveal .present .belief-list li:nth-child(1) { animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.2s; }
+    .reveal .present .belief-list li:nth-child(2) { animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.35s; }
+    .reveal .present .belief-list li:nth-child(3) { animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.5s; }
+
+    /* ── PHASE BADGE ── */
+    .phase-badge {
+      display: inline-block;
+      background: var(--purple);
+      color: white;
+      padding: 4px 16px;
+      font-size: 0.6em;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
   </style>
 </head>
 <body>
   <div class="reveal">
     <div class="slides">
 
-      <!-- SLIDE 1: Title -->
+      <!-- SLIDE 1: Cover -->
       <section>
         <div class="menra-logo">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 173.59 108.64" aria-hidden="true">
@@ -667,199 +786,221 @@
         <h1 class="title-heading menra-wordmark" style="font-size: 2.4em; margin-bottom: 0.3em;">menra</h1>
         <div class="divider" style="margin: 0 auto 20px;"></div>
         <p class="title-sub" style="font-size: 1.05em; color: var(--text-muted); max-width: 600px; margin: 0 auto; line-height: 1.5;">
-          AI Visibility Engine<br>for the AI Search Era
+          The Trust Layer of the Answer Economy
+        </p>
+        <p style="font-size: 0.75em; color: var(--text-muted); max-width: 550px; margin: 16px auto 0; line-height: 1.5;">
+          We measure and optimize brand visibility across LLM search results.
         </p>
       </section>
 
-      <!-- SLIDE 2: The Shift -->
+      <!-- SLIDE 2: The Problem -->
       <section>
-        <h2>The Shift</h2>
-        <p class="subtitle">Search behavior is changing.</p>
+        <h2>The Problem</h2>
+        <p class="subtitle">Search behavior has fundamentally changed.</p>
 
         <div class="compare">
           <div class="compare-col">
             <div class="label">Before</div>
             <div class="card" style="box-shadow: 6px 6px 0px var(--accent);">
-              <p>Users searched on Google and <strong>clicked links</strong>.</p>
+              <p>Users searched Google's "10 blue links" and clicked results.</p>
             </div>
           </div>
           <div class="compare-col now">
             <div class="label">Now</div>
             <div class="card">
-              <p>Users ask AI assistants and receive a <strong>single synthesized answer</strong>.</p>
+              <p>Users ask AI and receive a <strong>single synthesized answer</strong>. If a brand isn't in these answers, it doesn't exist.</p>
             </div>
           </div>
         </div>
 
-        <!-- All 9 supported AI platforms with inline SVG logos -->
+        <!-- All 9 supported AI platforms — @lobehub/icons -->
         <div class="platform-grid" style="margin-top: 28px;">
           <div class="platform-badge">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="#10A37F"><path d="M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.985 5.985 0 0 0-3.998 2.9 6.046 6.046 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073zM13.26 22.43a4.476 4.476 0 0 1-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 0 0 .392-.681v-6.737l2.02 1.168a.071.071 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494zM3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085 4.783 2.759a.771.771 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.033.062L9.74 19.95a4.5 4.5 0 0 1-6.14-1.646zM2.34 7.896a4.485 4.485 0 0 1 2.366-1.973V11.6a.766.766 0 0 0 .388.676l5.815 3.355-2.02 1.168a.076.076 0 0 1-.071 0l-4.83-2.786A4.504 4.504 0 0 1 2.34 7.872zm16.597 3.855l-5.833-3.387L15.119 7.2a.076.076 0 0 1 .071 0l4.83 2.791a4.494 4.494 0 0 1-.676 8.105v-5.678a.79.79 0 0 0-.407-.667zm2.01-3.023l-.141-.085-4.774-2.782a.776.776 0 0 0-.785 0L9.409 9.23V6.897a.066.066 0 0 1 .028-.061l4.83-2.787a4.5 4.5 0 0 1 6.68 4.66zm-12.64 4.135l-2.02-1.164a.08.08 0 0 1-.038-.057V6.075a4.5 4.5 0 0 1 7.375-3.453l-.142.08L8.704 5.46a.795.795 0 0 0-.393.681zm1.097-2.365l2.602-1.5 2.607 1.5v2.999l-2.597 1.5-2.607-1.5z"/></svg>
+            <img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/openai.svg" width="20" height="20" alt="OpenAI">
             ChatGPT
           </div>
           <div class="platform-badge">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="#20808D"><path d="M12 0C5.372 0 0 5.373 0 12c0 6.628 5.372 12 12 12 6.627 0 12-5.372 12-12 0-6.627-5.373-12-12-12zm-.915 4.258h1.83v5.307l4.597-2.654 .915 1.585-4.597 2.654 4.597 2.654-.915 1.585-4.597-2.654v5.307h-1.83v-5.307l-4.597 2.654-.915-1.585 4.597-2.654-4.597-2.654.915-1.585 4.597 2.654z"/></svg>
+            <img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/perplexity-color.svg" width="20" height="20" alt="Perplexity">
             Perplexity
           </div>
           <div class="platform-badge">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="#D97706"><path d="M17.303 4.698A3.49 3.49 0 0 0 14.56 3.5a3.49 3.49 0 0 0-2.745 1.198A3.49 3.49 0 0 0 9.07 3.5a3.49 3.49 0 0 0-2.744 1.198A3.49 3.49 0 0 0 3.58 3.5a3.5 3.5 0 0 0-3.5 3.5v.5h1v-.5a2.5 2.5 0 0 1 5 0v9a2.5 2.5 0 0 1-5 0v-.5h-1v.5a3.5 3.5 0 0 0 6.245 2.198A3.49 3.49 0 0 0 9.07 20.5a3.49 3.49 0 0 0 2.745-1.198A3.49 3.49 0 0 0 14.56 20.5a3.49 3.49 0 0 0 2.744-1.198A3.49 3.49 0 0 0 20.05 20.5a3.5 3.5 0 0 0 3.5-3.5v-.5h-1v.5a2.5 2.5 0 0 1-5 0V7a2.5 2.5 0 0 1 5 0v.5h1V7a3.5 3.5 0 0 0-3.5-3.5 3.49 3.49 0 0 0-2.744 1.198zM14.56 4.5a2.5 2.5 0 0 1 2.5 2.5v9a2.5 2.5 0 0 1-5 0V7a2.5 2.5 0 0 1 2.5-2.5zm-5.49 0a2.5 2.5 0 0 1 2.5 2.5v9a2.5 2.5 0 0 1-5 0V7a2.5 2.5 0 0 1 2.5-2.5z"/></svg>
+            <img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/claude-color.svg" width="20" height="20" alt="Claude">
             Claude
           </div>
           <div class="platform-badge">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="#4285F4"><path d="M11.04 1.32 9.36 4.68l-.24.48-.48-.12-3.72-.84.36 3.84.03.48-.48.12-3.72.96L3.48 13l.36.36-.24.36-2.04 3.24 3.6 1.32.48.18-.06.48-.48 3.84 3.6-1.44.45-.18.3.36 2.4 2.88 2.4-2.88.3-.36.45.18 3.6 1.44-.48-3.84-.06-.48.48-.18 3.6-1.32-2.04-3.24-.24-.36.36-.36 2.4-3.48-3.72-.96-.48-.12.03-.48.36-3.84-3.72.84-.48.12-.24-.48L12.96 1.32 12 0z"/></svg>
+            <img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/gemini-color.svg" width="20" height="20" alt="Gemini">
             Gemini
           </div>
           <div class="platform-badge">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="#7C3AED"><rect x="1" y="1" width="10" height="10" rx="1"/><rect x="13" y="1" width="10" height="10" rx="1"/><rect x="1" y="13" width="10" height="10" rx="1"/><rect x="13" y="13" width="10" height="10" rx="1"/></svg>
+            <img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/copilot-color.svg" width="20" height="20" alt="Copilot">
             Copilot
           </div>
           <div class="platform-badge">
-            <svg width="20" height="20" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            <img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/google-color.svg" width="20" height="20" alt="Google AI">
             Google AI
           </div>
           <div class="platform-badge">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="#000000"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            <img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/grok.svg" width="20" height="20" alt="Grok">
             Grok
           </div>
           <div class="platform-badge">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="#1A73E8"><circle cx="12" cy="12" r="10" fill="none" stroke="#1A73E8" stroke-width="2"/><path d="M7 12.5c0-3.5 2.5-6 5.5-6s5 2 5 5c0 2.5-1.5 4.5-4 4.5-1.5 0-2.5-.8-2.5-2.2 0-.4.1-.9.2-1.3l.8-3h-1.5l-.2.8c-.4-.6-1.1-1-2-1-2 0-3.5 1.8-3.5 4 0 1.5.8 2.5 2.2 2.5.9 0 1.7-.5 2.2-1.2 0 .8.6 1.2 1.5 1.2 3.2 0 5.3-2.5 5.3-5.8 0-3.8-2.8-6.2-6.2-6.2C8.5 4.3 5 8 5 12.5c0 3.5 2 6 5.5 6.5" fill="#1A73E8"/></svg>
+            <img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/deepseek-color.svg" width="20" height="20" alt="DeepSeek">
             DeepSeek
           </div>
           <div class="platform-badge">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="#0668E1"><path d="M6.915 4.03c-1.968 0-3.683 1.28-4.871 3.113C.704 9.208 0 11.883 0 14.449c0 .706.07 1.369.21 1.973a6.624 6.624 0 0 0 .265.86 5.297 5.297 0 0 0 .371.833c.164.27.357.508.579.708.473.43 1.068.674 1.727.674 1.287 0 2.382-.772 3.358-1.836a22.83 22.83 0 0 0 2.253-2.986l.672-.972.672.972a22.83 22.83 0 0 0 2.253 2.986c.976 1.064 2.071 1.836 3.358 1.836.659 0 1.254-.244 1.727-.674.222-.2.415-.437.579-.708a5.3 5.3 0 0 0 .371-.833c.104-.276.194-.56.265-.86.14-.604.21-1.267.21-1.973 0-2.566-.704-5.24-2.044-7.303C15.768 5.31 14.053 4.03 12.085 4.03c-1.287 0-2.382.772-3.358 1.836A22.83 22.83 0 0 0 6.474 8.85l-.672.972-.672-.972a22.83 22.83 0 0 0-2.253-2.986C1.9 4.8.806 4.03-.481 4.03z" transform="translate(2.915)"/></svg>
+            <img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/meta-color.svg" width="20" height="20" alt="Meta AI">
             Meta AI
           </div>
         </div>
 
-        <p style="margin-top: 20px; font-size: 0.75em; color: var(--text-muted);">
-          Discovery is moving from search engines to AI systems.
-        </p>
+        <div class="alert-box" style="max-width: 600px; margin: 24px auto 0;">
+          The $200B+ annual SEO budget is rapidly shifting toward GEO. Being cited by an LLM is the new "Page 1."
+        </div>
       </section>
 
-      <!-- SLIDE 3: The Problem -->
+      <!-- SLIDE 3: What You Need to Believe -->
       <section>
-        <h2>The Problem</h2>
-        <p class="subtitle">Brands have no visibility inside AI answers.</p>
+        <h2>What You Need to Believe</h2>
 
-        <ul class="question-list" style="max-width: 650px; margin: 24px auto;">
-          <li>Does ChatGPT recommend our product?</li>
-          <li>How are AI systems describing our brand?</li>
-          <li>Are competitors being recommended instead?</li>
+        <ul class="belief-list">
+          <li><strong>Permanent Shift:</strong> AI-based search is the new global standard, and it's growing exponentially.</li>
+          <li><strong>GEO vs. SEO:</strong> Influencing AI answers requires Generative Engine Optimization (GEO), not just keywords.</li>
+          <li><strong>The Timing:</strong> LLMs are in their early stages. Brand perceptions are being shaped right now. Missing this window means changing the AI narrative later will be nearly impossible.</li>
         </ul>
-
-        <div class="alert-box" style="max-width: 500px; margin: 28px auto 0;">
-          Traditional SEO cannot solve this.
-        </div>
       </section>
 
-      <!-- SLIDE 4: The Solution -->
+      <!-- SLIDE 4: Solution Phase 1 — Measurement -->
       <section>
-        <h2>The Solution</h2>
-        <p class="subtitle">Menra is an AI visibility engine.</p>
-
-        <div class="card-grid card-grid-3" style="max-width: 750px; margin: 32px auto 0;">
-          <div class="card">
-            <h3>Track</h3>
-            <p>How AI models mention your brand across 9 platforms</p>
-          </div>
-          <div class="card">
-            <h3>Measure</h3>
-            <p>Your AI visibility with our proprietary AIV metric</p>
-          </div>
-          <div class="card">
-            <h3>Improve</h3>
-            <p>Your presence in AI-generated answers</p>
-          </div>
-        </div>
-
-        <div class="metric-box" style="margin-top: 36px;">
-          <div class="metric-label">Core Metric</div>
-          <div class="metric-value">AIV Score</div>
-        </div>
-      </section>
-
-      <!-- SLIDE 5: Product -->
-      <section>
-        <h2>Product</h2>
-        <p class="subtitle">AI Visibility Dashboard</p>
+        <div class="phase-badge">Phase 1</div>
+        <h2>Measurement</h2>
+        <p class="subtitle">The Menra Dashboard — a health check for brands.</p>
 
         <div class="card-grid card-grid-4" style="max-width: 720px; margin: 28px auto 0;">
           <div class="card">
-            <h3>AI Mentions</h3>
-            <p>Track when and how AI systems reference your brand</p>
-          </div>
-          <div class="card">
-            <h3>Brand Sentiment</h3>
-            <p>Understand how AI describes your brand to users</p>
+            <h3>AI Visibility Score</h3>
+            <p>How does AI see your brand? Data-driven AIV scoring.</p>
           </div>
           <div class="card">
             <h3>Competitor Analysis</h3>
-            <p>See how you compare against competitors in AI answers</p>
+            <p>Where do you stand against competitors in AI answers?</p>
           </div>
           <div class="card">
-            <h3>AIV Score</h3>
-            <p>Single metric to measure your overall AI visibility</p>
+            <h3>Platform Tracking</h3>
+            <p>Which LLMs are citing you? Track across 9 platforms.</p>
+          </div>
+          <div class="card">
+            <h3>Sentiment Analysis</h3>
+            <p>How is AI describing your brand to users?</p>
           </div>
         </div>
       </section>
 
-      <!-- SLIDE 6: Menra Hub -->
+      <!-- SLIDE 5: Solution Phase 2 — Menra Hub -->
       <section>
-        <h2>Menra Hub</h2>
-        <p class="subtitle">Contributor Network</p>
+        <div class="phase-badge">Phase 2</div>
+        <h2>Optimization &amp; Menra Hub</h2>
+        <p class="subtitle">Community-driven content that feeds LLM training.</p>
 
         <div class="hub-flow">
-          <div class="hub-node">Writers &amp; Researchers</div>
+          <div class="hub-node">GEO Briefs</div>
           <div class="hub-arrow">&rarr;</div>
-          <div class="hub-node">Knowledge Contributions</div>
+          <div class="hub-node">10,000+ Creators</div>
           <div class="hub-arrow">&rarr;</div>
-          <div class="hub-node">Improved AI Visibility</div>
+          <div class="hub-node">LLM Training &amp; RAG</div>
           <div class="hub-arrow">&rarr;</div>
-          <div class="hub-node">Contributor Rewards</div>
+          <div class="hub-node">Brand Visibility</div>
         </div>
 
         <div class="card" style="max-width: 600px; margin: 36px auto 0; text-align: left;">
-          <p>Domain experts contribute insights that improve AI visibility signals. When contributions drive results, <span class="keyword">contributors are rewarded</span>.</p>
-          <br>
-          <p style="opacity: 0.6; font-size: 0.75em;">A continuously improving knowledge network.</p>
+          <p>We activate the <span class="keyword">Menra Hub</span> — a community of qualified creators producing high-quality content that feeds LLM training sets. This delivers <span class="keyword">90% gross margin</span> with massive organic marketing as a side benefit.</p>
         </div>
       </section>
 
-      <!-- SLIDE 7: Market Opportunity -->
+      <!-- SLIDE 6: Why Tokens -->
+      <section>
+        <h2>The Token Advantage</h2>
+        <p class="subtitle">Reducing content costs by 80%.</p>
+
+        <div class="compare">
+          <div class="compare-col">
+            <div class="label">Before</div>
+            <div class="card" style="box-shadow: 6px 6px 0px var(--accent);">
+              <h3>Traditional Agency</h3>
+              <p>High upfront payments. Expensive freelancers. Limited scalability.</p>
+            </div>
+          </div>
+          <div class="compare-col now">
+            <div class="label">Now</div>
+            <div class="card">
+              <h3>Menra Hub (Tokenized)</h3>
+              <p>Token rewards. Creators grow with the project. Rapidly scalable network of 10,000+ experts.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="stat-grid" style="grid-template-columns: 1fr 1fr; max-width: 450px; margin: 32px auto 0;">
+          <div class="stat-item">
+            <div class="stat-number">80%</div>
+            <div class="stat-label">Cost Reduction</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">10K+</div>
+            <div class="stat-label">Expert Network</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 7: Traction -->
+      <section>
+        <h2>Traction</h2>
+        <p class="subtitle">Market demand is proven.</p>
+
+        <div class="stat-grid" style="max-width: 650px; margin: 32px auto 0;">
+          <div class="stat-item">
+            <div class="stat-number">10</div>
+            <div class="stat-label">Brands Tested</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">5</div>
+            <div class="stat-label">Signed LOIs</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">$50K</div>
+            <div class="stat-label">MMR Value</div>
+          </div>
+        </div>
+
+        <div class="card" style="max-width: 500px; margin: 32px auto 0; text-align: center;">
+          <p>Successfully completed organic tests across various sectors. With <span class="keyword">zero ad spend</span>, we secured signed LOIs totaling $50,000 in MMR value.</p>
+        </div>
+      </section>
+
+      <!-- SLIDE 8: Market & Competition -->
       <section>
         <h2>Market Opportunity</h2>
 
-        <div class="big-number">$80B+</div>
-        <p style="font-size: 0.9em; color: var(--text-muted);">Global SEO industry</p>
+        <div class="big-number">$680B</div>
+        <p style="font-size: 0.9em; color: var(--text-muted);">The Answer Economy</p>
 
         <div class="divider" style="margin: 24px auto;"></div>
 
         <p style="font-size: 0.95em; max-width: 550px; margin: 0 auto; line-height: 1.6;">
-          As discovery shifts to AI systems,<br>a new category is emerging:
-        </p>
-        <h3 style="font-size: 1.4em; margin-top: 16px;">AI Visibility</h3>
-
-        <div class="tag-row" style="display: flex; gap: 12px; justify-content: center; margin-top: 24px; flex-wrap: wrap;">
-          <span class="tag">Monitor AI Recommendations</span>
-          <span class="tag">Understand Brand Representation</span>
-          <span class="tag">Improve AI Answers</span>
-        </div>
-      </section>
-
-      <!-- SLIDE 8: Early Validation -->
-      <section>
-        <h2>Early Validation</h2>
-        <p class="subtitle">AI search adoption is accelerating rapidly.</p>
-
-        <p style="margin: 24px auto 0; max-width: 600px; font-size: 0.9em; line-height: 1.6;">
-          Companies are asking <span class="keyword">new questions</span> that didn't exist in the traditional SEO era:
+          GEO is a brand-new, untapped category.
         </p>
 
-        <div class="validation-grid" style="max-width: 700px; margin: 28px auto 0;">
-          <div class="validation-item">How do AI systems describe our product?</div>
-          <div class="validation-item">Why are competitors recommended instead of us?</div>
-          <div class="validation-item">How can we influence AI-generated answers?</div>
-          <div class="validation-item">What does our AI visibility look like vs. competitors?</div>
+        <div class="card-grid card-grid-3" style="max-width: 750px; margin: 32px auto 0;">
+          <div class="card">
+            <h3>First Mover</h3>
+            <p>World's first community-driven GEO startup</p>
+          </div>
+          <div class="card">
+            <h3>Full Stack</h3>
+            <p>Competitors offer reports only. We combine measurement + execution.</p>
+          </div>
+          <div class="card">
+            <h3>Global Scale</h3>
+            <p>Highly scalable solution across markets and languages</p>
+          </div>
         </div>
       </section>
 
@@ -871,27 +1012,51 @@
         <div class="streams">
           <div class="stream-item">
             <div class="stream-icon">$</div>
-            <h3>Subscriptions</h3>
-            <p>Monthly SaaS plans for brands and agencies</p>
+            <h3>SaaS Revenue</h3>
+            <p>Monthly subscriptions from brands</p>
           </div>
           <div class="stream-item">
-            <div class="stream-icon">&lt;/&gt;</div>
-            <h3>Enterprise Analytics</h3>
-            <p>Advanced AI visibility tools for enterprise teams</p>
+            <div class="stream-icon">T</div>
+            <h3>Token Economy</h3>
+            <p>Minimized costs through token-based rewards</p>
           </div>
           <div class="stream-item">
-            <div class="stream-icon">&amp;</div>
-            <h3>Hub Marketplace</h3>
-            <p>Contributor marketplace through Menra Hub</p>
+            <div class="stream-icon">%</div>
+            <h3>90% Gross Margin</h3>
+            <p>High cash flow efficiency</p>
           </div>
         </div>
 
-        <div class="card" style="max-width: 500px; margin: 36px auto 0; text-align: center;">
-          <p><span class="keyword">AI Visibility</span> will become a new marketing category.</p>
+        <div class="metric-box" style="margin-top: 36px;">
+          <div class="metric-label">Outcome</div>
+          <div class="metric-value">90% Margin</div>
         </div>
       </section>
 
-      <!-- SLIDE 10: Roadmap -->
+      <!-- SLIDE 10: Team -->
+      <section>
+        <h2>Team</h2>
+
+        <div class="team-grid">
+          <div class="team-member">
+            <div class="team-role">CEO</div>
+            <div class="team-name">Alihan</div>
+            <div class="team-bio">Management experience at top-tier firms (BNBChain, HTX, XT). Expert in community building.</div>
+          </div>
+          <div class="team-member">
+            <div class="team-role">COO</div>
+            <div class="team-name">Eren</div>
+            <div class="team-bio">10 years in marketing. Proven scale experience — grew teams from 4 to 190 people.</div>
+          </div>
+          <div class="team-member">
+            <div class="team-role">CTO</div>
+            <div class="team-name">Ertugrul</div>
+            <div class="team-bio">16 years in development. Tech Lead at unicorns — Hepsiburada and Scorp.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 11: Roadmap -->
       <section>
         <h2>Roadmap</h2>
 
@@ -901,21 +1066,21 @@
             <ul>
               <li>Launch Menra analytics platform</li>
               <li>Onboard early customers</li>
-              <li>Launch Menra Hub</li>
+              <li>Launch Menra Hub — 10K+ creators</li>
             </ul>
           </div>
           <div class="timeline-col">
             <h3>2026</h3>
             <ul>
-              <li>Expand contributor network</li>
               <li>Scale globally</li>
-              <li>Establish AIV as an industry metric</li>
+              <li>Establish AIV as industry metric</li>
+              <li>Expand GEO execution services</li>
             </ul>
           </div>
         </div>
       </section>
 
-      <!-- SLIDE 11: Closing -->
+      <!-- SLIDE 12: Closing -->
       <section>
         <div class="menra-logo">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 173.59 108.64" aria-hidden="true">
