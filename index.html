@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 
   <style>
     :root {
@@ -516,6 +517,134 @@
     .reveal .present .stream-item:nth-child(2) { animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.35s; }
     .reveal .present .stream-item:nth-child(3) { animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.5s; }
 
+    /* ── CHART CONTAINERS ── */
+    .chart-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 28px;
+      max-width: 850px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .chart-box {
+      background: white;
+      border: 2px solid var(--navy);
+      box-shadow: 6px 6px 0px var(--purple);
+      padding: 20px;
+      border-radius: 0;
+      position: relative;
+    }
+
+    .chart-box h3 {
+      font-size: 0.7em;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .chart-box canvas {
+      max-height: 280px;
+    }
+
+    .reveal .present .chart-box:nth-child(1) { animation: slideInLeft 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.2s; }
+    .reveal .present .chart-box:nth-child(2) { animation: slideInRight 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.35s; }
+
+    /* ── 2x2 MATRIX ── */
+    .matrix-2x2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 0;
+      width: 500px;
+      height: 340px;
+      margin: 24px auto 0;
+      position: relative;
+      border: 2px solid var(--navy);
+    }
+
+    .matrix-2x2::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--navy);
+    }
+
+    .matrix-2x2::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--navy);
+    }
+
+    .matrix-quad {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      font-size: 0.7em;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .matrix-quad.highlight {
+      background: rgba(124, 58, 237, 0.08);
+    }
+
+    .matrix-quad .quad-label {
+      font-weight: 700;
+      font-size: 1.1em;
+      margin-bottom: 4px;
+    }
+
+    .matrix-quad .quad-desc {
+      color: var(--text-muted);
+      font-size: 0.85em;
+    }
+
+    .matrix-quad.highlight .quad-label {
+      color: var(--purple);
+      font-size: 1.3em;
+    }
+
+    .matrix-axis {
+      text-align: center;
+      font-size: 0.65em;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    .matrix-axis-y {
+      position: absolute;
+      left: -80px;
+      top: 50%;
+      transform: translateY(-50%) rotate(-90deg);
+      font-size: 0.65em;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .matrix-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .reveal .present .matrix-2x2 { animation: scalePop 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.3s; }
+
     /* ── SUBTITLE ── */
     .subtitle { font-size: 0.85em; color: var(--text-muted); margin-top: 8px; }
 
@@ -858,14 +987,31 @@
         </div>
       </section>
 
-      <!-- SLIDE 3: What You Need to Believe -->
+      <!-- SLIDE 3: The Data — Charts -->
+      <section>
+        <h2>The Shift in Numbers</h2>
+        <p class="subtitle">AI search is replacing traditional search at an accelerating rate.</p>
+
+        <div class="chart-row">
+          <div class="chart-box">
+            <h3>Search Behavior Shift</h3>
+            <canvas id="chartSearchShift"></canvas>
+          </div>
+          <div class="chart-box">
+            <h3>Marketing Budget Migration</h3>
+            <canvas id="chartBudgetShift"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 4: What You Need to Believe -->
       <section>
         <h2>What You Need to Believe</h2>
 
         <ul class="belief-list">
           <li><strong>Permanent Shift:</strong> AI-based search is the new global standard, and it's growing exponentially.</li>
           <li><strong>GEO vs. SEO:</strong> Influencing AI answers requires Generative Engine Optimization (GEO), not just keywords.</li>
-          <li><strong>The Timing:</strong> LLMs are in their early stages. Brand perceptions are being shaped right now. Missing this window means changing the AI narrative later will be nearly impossible.</li>
+          <li><strong>The Timing:</strong> LLMs are in their early stages. Brand perceptions are being shaped right now. Missing this window means changing the AI narrative later will be nearly impossible and extremely costly.</li>
         </ul>
       </section>
 
@@ -938,19 +1084,13 @@
           </div>
         </div>
 
-        <div class="stat-grid" style="grid-template-columns: 1fr 1fr; max-width: 450px; margin: 32px auto 0;">
-          <div class="stat-item">
-            <div class="stat-number">80%</div>
-            <div class="stat-label">Cost Reduction</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">10K+</div>
-            <div class="stat-label">Expert Network</div>
-          </div>
+        <div class="chart-box" style="max-width: 500px; margin: 28px auto 0; min-height: 180px;">
+          <h3>Content Production Cost</h3>
+          <canvas id="chartCostCompare" height="140"></canvas>
         </div>
       </section>
 
-      <!-- SLIDE 7: Traction -->
+      <!-- SLIDE 8: Traction -->
       <section>
         <h2>Traction</h2>
         <p class="subtitle">Market demand is proven.</p>
@@ -1004,7 +1144,36 @@
         </div>
       </section>
 
-      <!-- SLIDE 9: Business Model -->
+      <!-- SLIDE 10: Competitive Landscape -->
+      <section>
+        <h2>Competitive Landscape</h2>
+        <p class="subtitle">Only full-stack GEO solution in the market.</p>
+
+        <div class="matrix-wrapper">
+          <div class="matrix-axis-y">Data Depth (Analytics)</div>
+          <div class="matrix-2x2">
+            <div class="matrix-quad">
+              <div class="quad-label" style="color: var(--text-muted);">—</div>
+              <div class="quad-desc">High Analytics<br>Low Execution</div>
+            </div>
+            <div class="matrix-quad highlight">
+              <div class="quad-label">MENRA AI</div>
+              <div class="quad-desc">Full Stack<br>Measurement + Execution</div>
+            </div>
+            <div class="matrix-quad">
+              <div class="quad-label" style="color: var(--text-muted);">Traditional SEO</div>
+              <div class="quad-desc">Ahrefs, Semrush<br>No AI visibility</div>
+            </div>
+            <div class="matrix-quad">
+              <div class="quad-label" style="color: var(--text-muted);">GEO Analytics</div>
+              <div class="quad-desc">Reports only<br>No execution power</div>
+            </div>
+          </div>
+          <div class="matrix-axis">Execution Power (Creator Hub)</div>
+        </div>
+      </section>
+
+      <!-- SLIDE 11: Business Model -->
       <section>
         <h2>Business Model</h2>
         <p class="subtitle">SaaS Platform</p>
@@ -1138,6 +1307,157 @@
       width: 1200,
       height: 700,
       margin: 0.08,
+    });
+  </script>
+
+  <script>
+    // Chart.js initialization — wait for DOM + Chart.js
+    window.addEventListener('load', function () {
+      const fontFamily = "'IBM Plex Mono', monospace";
+      const navy = '#1A2332';
+      const purple = '#7C3AED';
+      const beige = '#E8E4DB';
+      const gridColor = 'rgba(26, 35, 50, 0.08)';
+
+      Chart.defaults.font.family = fontFamily;
+      Chart.defaults.font.size = 11;
+      Chart.defaults.color = navy;
+
+      // Chart 1: Search Behavior Shift (Line)
+      new Chart(document.getElementById('chartSearchShift'), {
+        type: 'line',
+        data: {
+          labels: ['2023', '2024', '2025 (P)', '2026 (P)', '2027 (P)'],
+          datasets: [
+            {
+              label: 'Traditional Search',
+              data: [100, 95, 85, 70, 55],
+              borderColor: navy,
+              backgroundColor: 'rgba(26, 35, 50, 0.05)',
+              fill: true,
+              tension: 0.3,
+              pointRadius: 5,
+              pointBackgroundColor: navy,
+              borderWidth: 3,
+            },
+            {
+              label: 'AI Answer Engines',
+              data: [5, 20, 45, 80, 120],
+              borderColor: purple,
+              backgroundColor: 'rgba(124, 58, 237, 0.08)',
+              fill: true,
+              tension: 0.3,
+              pointRadius: 5,
+              pointBackgroundColor: purple,
+              borderWidth: 3,
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { boxWidth: 12, padding: 16, font: { size: 10 } }
+            }
+          },
+          scales: {
+            y: {
+              title: { display: true, text: 'Usage Index', font: { size: 10 } },
+              grid: { color: gridColor },
+              border: { color: navy }
+            },
+            x: {
+              grid: { color: gridColor },
+              border: { color: navy }
+            }
+          }
+        }
+      });
+
+      // Chart 2: Budget Shift SEO → GEO (Stacked Bar)
+      new Chart(document.getElementById('chartBudgetShift'), {
+        type: 'bar',
+        data: {
+          labels: ['2024', '2026 (P)'],
+          datasets: [
+            {
+              label: 'Traditional SEO',
+              data: [90, 40],
+              backgroundColor: beige,
+              borderColor: navy,
+              borderWidth: 2,
+              borderRadius: 0,
+              borderSkipped: false,
+            },
+            {
+              label: 'GEO / AEO',
+              data: [10, 60],
+              backgroundColor: purple,
+              borderColor: navy,
+              borderWidth: 2,
+              borderRadius: 0,
+              borderSkipped: false,
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { boxWidth: 12, padding: 16, font: { size: 10 } }
+            }
+          },
+          scales: {
+            x: { stacked: true, grid: { display: false }, border: { color: navy } },
+            y: {
+              stacked: true,
+              title: { display: true, text: 'Budget %', font: { size: 10 } },
+              grid: { color: gridColor },
+              border: { color: navy },
+              max: 100
+            }
+          }
+        }
+      });
+
+      // Chart 3: Cost Comparison (Bar)
+      new Chart(document.getElementById('chartCostCompare'), {
+        type: 'bar',
+        data: {
+          labels: ['Traditional Agency', 'Menra Hub'],
+          datasets: [{
+            data: [100, 20],
+            backgroundColor: [beige, purple],
+            borderColor: navy,
+            borderWidth: 2,
+            borderRadius: 0,
+            borderSkipped: false,
+            barThickness: 36,
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          indexAxis: 'y',
+          plugins: { legend: { display: false } },
+          scales: {
+            x: {
+              title: { display: true, text: 'Relative Cost Index', font: { size: 10 } },
+              grid: { color: gridColor },
+              border: { color: navy },
+              max: 110
+            },
+            y: {
+              grid: { display: false },
+              border: { color: navy }
+            }
+          }
+        }
+      });
     });
   </script>
 </body>
